@@ -1,1 +1,24 @@
-<p>login works!</p>
+<section class="auth-container">
+
+    <form [formGroup]="loginForm" (ngSubmit)="credentialValidatorForm()">
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" id="email" formControlName="email">
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          *Please enter the valid email.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="password" id="password" formControlName="password" required minlength="6">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          *Please enter the valid password.
+        </div>
+      </div>
+  
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+      <button type="submit" [disabled]="loginForm.invalid">login</button>
+    </form>
+  </section>
