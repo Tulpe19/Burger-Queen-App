@@ -9,7 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { OrderComponent } from './components/order/order.component';
 import { WaiterComponent } from './components/waiter/waiter.component';
 import { KitchenComponent } from './components/kitchen/kitchen.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,14 +17,14 @@ import { HttpClient } from '@angular/common/http';
     LoginComponent,
     OrderComponent,
     WaiterComponent,
-    KitchenComponent,
+    KitchenComponent,    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClient
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

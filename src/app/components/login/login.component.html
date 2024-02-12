@@ -1,17 +1,20 @@
-<section class="auth-container">
-
-    <form [formGroup]="loginForm" (ngSubmit)="credentialValidatorForm()">
-      <div class="form-group">
-        <label for="email">email</label>
-        <input type="email" id="email" formControlName="email">
+<section class="container-sm">
+  <figure>
+    <img src="../../../assets/img/login.jpg" alt="Burguer Picture" class="rounded-bottom-image">
+  </figure>
+  <h3>Burger Queen</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="credentialValidatorForm()" >
+      <div class="form-group-email">
+        <label for="email"></label>
+        <input type="email" id="email" placeholder="email" class="form-control">
         <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
           *Please enter the valid email.
         </div>
       </div>
   
-      <div class="form-group">
-        <label for="password">password</label>
-        <input type="password" id="password" formControlName="password" required minlength="6">
+      <div class="form-group-password">
+        <label for="password"></label>
+        <input type="password" id="password" placeholder="password" class="form-control" required minlength="6" >
         <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
           *Please enter the valid password.
         </div>
@@ -19,6 +22,6 @@
   
       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
   
-      <button type="submit" [disabled]="loginForm.invalid">login</button>
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">login</button>
     </form>
   </section>

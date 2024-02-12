@@ -1,0 +1,27 @@
+@import '../../../custom-variables.scss';
+
+.container-sm {
+    background-color: $dark;
+    color: $light;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+form {
+    background-color: #FFFFFF;
+    margin: 1.1rem;
+    border-radius: 3rem ;
+    height: 30%;
+}
+
+input {
+    background-color: $success;
+}
+
+
+.rounded-bottom-image {
+    width: 120%; 
+    height: auto; 
+    border-radius: 0 0 30px 30px; 
+}
