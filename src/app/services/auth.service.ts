@@ -8,7 +8,7 @@ import { AuthResponse } from '../models/auth-model';
 })
 export class AuthService {
 
-  private apiBaseUrl = 'http://localhost:8080/'
+  private apiBaseUrl = 'http://localhost:8080'
 
   constructor(private http: HttpClient) { }
 
