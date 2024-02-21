@@ -1,9 +1,43 @@
 @import '../../../custom-variables.scss';
+#containerMaster {
+    height: 100vh;
+    background-image: url(../../../assets/img/background.png);
+    background-size: cover;
+    display: flex;
+}
 
+.formSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+img {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 
-.rounded-bottom-image {
-    width: 100%; 
-    border-radius: 0 0 30px 30px; 
+form {
+    background-color: #e7e5e4ef;
+    border-radius: 2rem;
+    padding: 1.4rem 0.7rem ;
+}
 
+input {
+    background-color: $success;
+    width: 15rem;
+}
+
+.btn-login {
+    background-color: $primary;
+    color: #f3f3f3;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }

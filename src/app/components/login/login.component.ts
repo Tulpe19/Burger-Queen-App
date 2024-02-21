@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { AuthResponse } from 'src/app/models/auth-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string = '';
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) { 
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { 
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -30,8 +30,9 @@ export class LoginComponent implements OnInit {
     }
     const { email, password } = this.loginForm.value;
     this.authService.login(email, password).subscribe({
-      next: (response: AuthResponse) => {
-        localStorage.setItem('accessToken', response.accessToken);
+      next: (response: boolean) => {
+        console.log('response', response)
+        this.router.navigate(['/orders', { id: 1 }])
       },
       error: (error) => {
         if (error.status === 400) {
