@@ -3,13 +3,11 @@ import { Observable, map} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthResponse } from '../../../models/auth-model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root'})
 export class AuthService {
 
   private apiBaseUrl = 'http://localhost:8080'
-  private accessToken: string | undefined
+  public accessToken: string | undefined
 
   constructor(private http: HttpClient) { }
 
