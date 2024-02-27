@@ -4,3 +4,14 @@ $success: #F17D0A;
 $danger: #750A0A;
 $light: #FFFFFF;
 $dark: #0D1D25;
+
+$theme-colors: (
+  "primary": $primary,
+  "success": $success,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
+
+$navbar-light-color: rgba($primary, .5);
+$nav-tabs-link-active-color: rgba($success, .9);

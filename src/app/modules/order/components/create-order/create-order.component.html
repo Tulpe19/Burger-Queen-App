@@ -1,0 +1,14 @@
+<div class="container" *ngFor="let category of categories">
+    <h1 >{{ category }}</h1>
+    <ul class="container d-flex gap-3 flex-wrap">
+    <!-- <li *ngFor="let product of menu[category]">{{ product.name }}</li> -->
+        <li *ngFor="let product of menu[category]" class="card">
+            <img [src]="product.image" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">Price: {{ product.price }}</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+        </li>
+    </ul>
+</div>

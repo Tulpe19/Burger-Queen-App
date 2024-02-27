@@ -1,0 +1,42 @@
+#containerMaster {
+  height: 100vh;
+  background-image: url(../../../../../assets/img/backgroundLogin.jpg);
+  background-size: cover;
+  display: flex;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+form {
+  background-color: rgba(231, 229, 228, 0.937254902);
+  border-radius: 2rem;
+  padding: 1.4rem 0.7rem;
+}
+
+input {
+  background-color: #F17D0A;
+  width: 15rem;
+}
+
+.btn-login {
+  background-color: #0B425C;
+  color: #f3f3f3;
+  font-weight: bold;
+  font-size: large;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}/*# sourceMappingURL=login.component.css.map */

@@ -1,1 +1,9 @@
+<ul *ngIf="shouldShowNavbar$ | async" ngbNav [activeId]="currentURL$ | async"  ngbNav class="mb-2 nav-tabs justify-content-center">
+  <li [ngbNavItem]="navBarRoute.id" *ngFor="let navBarRoute of navBarRoutes">
+    <h1><a ngbNavLink [routerLink]="navBarRoute.path">{{ navBarRoute.buttonText }}</a></h1>
+  </li>
+  <li ngbNavItem>
+    <h1><a class="link-danger" ngbNavLink (click)="logout()">Log out</a></h1>
+  </li>
+</ul>
 <router-outlet></router-outlet>

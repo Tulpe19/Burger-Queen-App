@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './modules/auth/auth.module';
 import { OrderModule } from './modules/order/order.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { OrderModule } from './modules/order/order.module';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     NgbModule,
     HttpClientModule,
     AuthModule,
