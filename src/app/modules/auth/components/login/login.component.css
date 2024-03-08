@@ -1,6 +1,6 @@
 #containerMaster {
   height: 100vh;
-  background-image: url(../../../../../assets/img/backgroundLogin.jpg);
+  background-image: url(../../../../../assets/img/background.png);
   background-size: cover;
   display: flex;
 }

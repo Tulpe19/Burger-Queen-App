@@ -35,7 +35,7 @@ export class AppComponent {
     this.currentURL$ = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd), 
       map((finalNavigation => {
-        const result = (finalNavigation as NavigationEnd).url
+        const result = (finalNavigation as NavigationEnd).urlAfterRedirects
         console.log(result)
         return result
       }))
