@@ -5,9 +5,14 @@
         <li *ngFor="let product of menu[category]" class="card">
             <img [src]="product.image" class="card-img-top" alt="...">
             <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">Price: {{ product.price }}</p>
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">Price: {{ product.price }}</p>
             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                <div class="input-group">
+                    <button class="btn btn-primary btn-outline-secondary" type="button" (click)="addProduct(product.id)">+</button>
+                    <input type="text" class="form-control" placeholder="" [value]="getProductQuantityById(product.id)" aria-label="Example text with two button addons">
+                    <button class="btn btn-primary btn-outline-secondary" type="button" (click)="removeProduct(product.id)">-</button>
+                </div>
             </div>
         </li>
     </ul>
