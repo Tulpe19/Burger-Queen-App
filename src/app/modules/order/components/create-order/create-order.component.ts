@@ -64,8 +64,17 @@ export class CreateOrderComponent implements OnInit {
     if(this.debug) console.log({ newOrder: this.newOrder})
   }
 
+  //función para abrir el modal por medio del componente de ng-bootstrap
   openScrollableContent(longContent: any) {
 		this.modalService.open(longContent, { scrollable: true });
 	}
+
+  totalPrice() {
+    let total = 0
+    for(let productOrder of this.newOrder.products) {
+      total += productOrder.qty * productOrder.product.price;
+    }
+    return total;
+  }
 
 }

@@ -27,7 +27,34 @@
       <label for="customerName"></label>
       <input type="text" name="customerName" id="getcustomerName" placeholder="Customer name">
     </form>
-
+    <div id="container-list-order">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let productOrder of newOrder.products; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ productOrder.product.name }}
+            </td>
+            <td>{{ productOrder.qty| number }}</td>
+            <td>{{ productOrder.product.price| number }}</td>
+          </tr>
+          <tr >
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td >{{totalPrice()}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-light">To cook</button>
