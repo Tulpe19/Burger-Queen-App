@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../../orders.service';
-import { Order, Product, ProductOrder } from '../../models/order';
+import { Order, Product } from '../../models/order';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-order',
@@ -15,7 +16,7 @@ export class CreateOrderComponent implements OnInit {
   public newOrder: Order;
   private debug: boolean = true
 
-  constructor(public authService: AuthService , public orderService: OrdersService) {
+  constructor( private modalService:NgbModal, public authService: AuthService , public orderService: OrdersService) {
     this.newOrder = {
       id: undefined,
       userId: this.authService.userInfo.id,
@@ -53,7 +54,6 @@ export class CreateOrderComponent implements OnInit {
 
   removeProduct(productId: number) {
     const productOrder = this.newOrder.products.find((productOrder) => productOrder.product.id === productId)
-    const product = Object.values(this.menu).flat().find((product: any) => product.id === productId)
     if(productOrder && productOrder.qty > 1) {
       productOrder.qty--
     } else if(productOrder && productOrder.qty === 1) {
@@ -63,5 +63,9 @@ export class CreateOrderComponent implements OnInit {
 
     if(this.debug) console.log({ newOrder: this.newOrder})
   }
+
+  openScrollableContent(longContent: any) {
+		this.modalService.open(longContent, { scrollable: true });
+	}
 
 }
