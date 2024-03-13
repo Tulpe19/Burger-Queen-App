@@ -40,6 +40,22 @@ export class CreateOrderComponent implements OnInit {
     return this.newOrder.products.find((productOrder) => productOrder.product.id === productId)?.qty || 0
   }
 
+  setProductQuantityById(productId: number, changeEvent: Event) {
+    const newQty = parseInt((changeEvent.target as HTMLInputElement).value)
+    const productOrder = this.newOrder.products.find((productOrder) => productOrder.product.id === productId)
+    if(productOrder) {
+      if(newQty) {
+        productOrder.qty = newQty
+      } else {
+        const productOrderIndex = this.newOrder.products.indexOf(productOrder)
+        this.newOrder.products.splice(productOrderIndex, 1)
+      }
+    } else {
+      const product = Object.values(this.menu).flat().find((product: any) => product.id === productId)
+      this.newOrder.products.push({ qty: newQty, product: product as Product })
+    }
+  }
+
   addProduct(productId: number) {
     const productOrder = this.newOrder.products.find((productOrder) => productOrder.product.id === productId)
     const product = Object.values(this.menu).flat().find((product: any) => product.id === productId)
@@ -70,11 +86,13 @@ export class CreateOrderComponent implements OnInit {
 	}
 
   totalPrice() {
-    let total = 0
-    for(let productOrder of this.newOrder.products) {
-      total += productOrder.qty * productOrder.product.price;
-    }
-    return total;
+    // let total = 0
+    // for(let productOrder of this.newOrder.products) {
+    //   total += productOrder.qty * productOrder.product.price;
+    // }
+    // return total;
+    let total = this.newOrder.products.reduce((partial, productOrder) => partial + (productOrder.qty * productOrder.product.price), 0)
+    return total
   }
 
 }
