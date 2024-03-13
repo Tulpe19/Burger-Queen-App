@@ -6,11 +6,13 @@
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
                 <p class="card-text">Price: {{ product.price }}</p>
-                <div class="input-group">
-                  <button class="btn btn-primary btn-outline-secondary" type="button" (click)="removeProduct(product.id)">-</button>
-                  <input type="text" class="form-control" placeholder="" [value]="getProductQuantityById(product.id)" aria-label="Example text with two button addons">
-                  <button class="btn btn-primary btn-outline-secondary" type="button" (click)="addProduct(product.id)">+</button>
-                </div>
+            </div>
+            <div class="card-footer">
+              <div class="input-group">
+                <button class="btn btn-primary btn-outline-secondary" type="button" (click)="removeProduct(product.id)">-</button>
+                <input type="number" class="form-control" placeholder="" [value]="getProductQuantityById(product.id)" (change)="setProductQuantityById(product.id, $event)" aria-label="Example text with two button addons">
+                <button class="btn btn-primary btn-outline-secondary" type="button" (click)="addProduct(product.id)">+</button>
+              </div>
             </div>
         </li>
     </ul>
@@ -57,6 +59,6 @@
     </div>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-light">To cook</button>
+		<button type="button" class="btn btn-primary">To cook</button>
 	</div>
 </ng-template>
