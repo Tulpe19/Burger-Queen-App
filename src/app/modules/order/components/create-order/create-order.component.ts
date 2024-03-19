@@ -15,8 +15,10 @@ export class CreateOrderComponent implements OnInit {
   public categories: string[] = []
   public newOrder: Order;
   private debug: boolean = true
+  public errorMessage: string = '';
 
   constructor( private modalService:NgbModal, public authService: AuthService , public orderService: OrdersService) {
+    // Inicializacion del componente
     this.newOrder = {
       id: undefined,
       userId: this.authService.userInfo.id,
@@ -95,4 +97,25 @@ export class CreateOrderComponent implements OnInit {
     return total
   }
 
+  setOrderClient(changeEvent: Event) {
+    const newClient = (changeEvent.target as HTMLInputElement).value
+    this.newOrder.client = newClient
+  }
+
+  addNewOrder() {
+    this.orderService.createNewOrder(this.newOrder).subscribe(result => { 
+      this.modalService.dismissAll();
+      console.log('Created order', { result })
+    })
+  }
+
+
+  isValidOrder(): boolean {
+    
+    if (!this.newOrder.client || this.newOrder.products.length === 0) {
+      this.errorMessage = 'Please fill in the client name and add products to the order.';
+      return false;
+    }
+    return true;
+  }
 }

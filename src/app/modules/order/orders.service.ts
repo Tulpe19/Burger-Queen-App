@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { BehaviorSubject, Observable, map, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, switchMap, tap, throwError } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
+import { Order } from './models/order';
 
 @Injectable()
 export class OrdersService {
@@ -9,6 +10,7 @@ export class OrdersService {
   private APIBaseURL = 'http://localhost:8080'
   private getOrdersURL = `${this.APIBaseURL}/orders`
   private getProductsURL = `${this.APIBaseURL}/products`
+  private createOrderURL = this.getOrdersURL
 
 
   public ordersResultPage$: Observable<any>
@@ -52,5 +54,18 @@ export class OrdersService {
         return result;
       })
     )
+  }
+
+  createNewOrder(orderDetails: Order): Observable<any> {
+    orderDetails.dateEntry = new Date().toISOString()
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authService.accessToken}`)    
+    return this.httpClient.post<any>(this.createOrderURL, orderDetails, { headers }).pipe(
+      tap(response => console.log('Got response', { response })),
+      catchError(error => {
+        console.log('An error ocurred', error)
+        throw error
+      })
+    )
+
   }
 }

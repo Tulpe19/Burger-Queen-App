@@ -27,7 +27,7 @@
 	<div class="modal-body">
 		<form action="customerName">
       <label for="customerName"></label>
-      <input type="text" name="customerName" id="getcustomerName" placeholder="Customer name">
+      <input type="text" name="customerName" [value]="newOrder.client" (change)="setOrderClient($event)" placeholder="Customer name">
     </form>
     <div id="container-list-order">
       <table class="table">
@@ -59,6 +59,6 @@
     </div>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-primary">To cook</button>
+		<button type="button" class="btn btn-primary"(click)="addNewOrder()">To cook</button>
 	</div>
 </ng-template>
